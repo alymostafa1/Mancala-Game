@@ -11,7 +11,7 @@ def move(board, idx, stealing = True):
     next_player = 0
     inc = 0
     final_idx = 0
-
+    board = board.copy()
     if idx < 6: 
          player_1 = 1
     else:
