@@ -17,7 +17,11 @@ def move(board, idx, stealing = True):
     else:
         player_2 = 2
 
-    pocket_val = board[idx]        
+    pocket_val = board[idx]
+    if pocket_val == 0 :
+        print("Pocket is empty")
+        return board , -1
+    
     board[idx] = 0
     for i in range(idx + 1 , pocket_val + idx + 1):
         i = i%14
@@ -52,12 +56,15 @@ def move(board, idx, stealing = True):
             board[((final_idx + inc) % 14)] = 0           
         if player_2: 
             board[13] += board[((final_idx + inc) % 14)]
-            board[((final_idx + inc) % 14)] = 0
-     
+            board[((final_idx + inc) % 14)] = 0      
     return board , next_player
     
-board=[0,0,0,0,10,0,0,0,0,0, 0, 0, 0, 0]
+board=[0,0,0,0,0,0,0,0,0,0, 0, 0, 0, 0]
 #     [0,1,2,3,4 ,5,6,7,8,9,10,11,12,13]
+b, next_player = move(board, 4, False)
+print_board(b)
+print(b)
+print("Next player is: {}".format(int(next_player)))
 
 
 
