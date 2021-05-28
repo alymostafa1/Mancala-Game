@@ -23,18 +23,24 @@ class Node:
     
     def buildTree(self, depth_limit):
         if depth_limit == 0:
-            return
+            return 
         
         self.getStates()
         for state in self.possible_states:
             state.buildTree(depth_limit - 1)
             
-    def minimax(self, board, depth_limit):
-        if depth_limit == 0:
-            return
+            
+                                                                    
         
+    def minimax(self,alpha, beta, depth_limit):
         max_layer =  self.next_player
         
+        # if we reached the final node or the game is over before the depth limit 
+        if depth_limit == 0 or gameover(board)==1 :
+            score= self.board[13] - self.board[6]
+            return score
+        
+    
         if max_layer == 1: #### AI TURN - PLAYER1
             best = -math.inf
             for state in self.possible_states:

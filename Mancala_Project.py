@@ -4,6 +4,33 @@ def print_board(board):
     print("|{}| \t\t\t\t\t  |{}|" .format(board[13], board[6]))
     # print("-----------------------------")
     print("| |",  board[0], "|" , board[1], "|"  , board[2], "|" , board[3], "|" , board[4], "|" , board[5], "| |" )
+    
+
+    
+# board = [4,4,4,0,4,4,0,
+#          0,0,2,0,0,0,0]
+
+
+def gameover(board):
+    count=0 
+    count1=0
+    for i in range(len(board)):
+        if (i >= 0 and i < 6 ):
+            if board[i] ==0:
+                count = count + 1
+                # print(count)
+        elif ( i> 6 and i <13 ):
+            if board[i]==0:
+                count1 =count1 +1 
+        
+    if count == 6 or count1 == 6: 
+        return 1        
+    else: 
+        return 0 
+        
+        
+result= gameover(board)
+print(result)
 
 def move(board, idx, stealing = True):   
     player_1 = 0
