@@ -2,6 +2,14 @@ from Mancala_Project import *
 
 # PLAYER 1
 
+def playTurn(board, depth_limit, stealing = True):
+    game = Node(board)
+    game.buildTree(depth_limit, stealing)
+    score, best_state = game.minimax()
+    
+    return best_state
+
+
 class Node:
     def __init__(self, board, maximizer=True):
         #self.depth = depth
@@ -15,7 +23,7 @@ class Node:
     def getStates(self, stealing = True):
         if self.maximizer:
             for i in range(6):
-                possible_state, next_player = move(board, i, stealing)
+                possible_state, next_player = move(self.board, i, stealing)
                 if next_player != -1:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
@@ -38,12 +46,12 @@ class Node:
     def minimax(self):
         
         if len(self.possible_states) == 0: ### GET SCORE
-            score = abs(self.board[6] - self.board[13])
+            score = self.board[6] - self.board[13]
             return score, None
         
         if gameover(self.board):
-            #### FUNCTION TO COLLECT STONES IN EACH PLAYER'S MANCALA --- RETURN BOARD ####
-            score = abs(self.board[6] - self.board[13])
+            board = getWinner(self.board)
+            score = self.board[6] - self.board[13]
             return score, None
             
         best_state = None
@@ -73,12 +81,6 @@ class Node:
                     break
         
         return best, best_state.board
-                
-        # # if we reached the final node or the game is over before the depth limit 
-        # if depth_limit == 0 or gameover(board)==1 :
-        #     score= self.board[13] - self.board[6]
-        #     return score
-        
    
     def printMoves(self):
         for state in self.possible_states:
@@ -88,9 +90,7 @@ class Node:
 
 board = [0,0,0,0,2,1,0,
          4,0,0,0,0,0,0]
-
-game = Node(board)
-game.buildTree(3, False)
-score, best_state = game.minimax()
+depth_limit = 3
+stealing = False
+best_state = playTurn(board, depth_limit, stealing)
 print(best_state)
-print(score)
