@@ -13,11 +13,18 @@ class Node:
         self.beta = float('inf')
         
     def getStates(self, stealing = True):
-        for i in range(6):
-            possible_state, next_player = move(board, i, stealing)
-            if next_player != -1:
-                state = Node(possible_state, next_player == 1)
-                self.possible_states.append(state)
+        if self.maximizer:
+            for i in range(6):
+                possible_state, next_player = move(board, i, stealing)
+                if next_player != -1:
+                    state = Node(possible_state, next_player == 1)
+                    self.possible_states.append(state)
+        else:
+            for i in range(7,13):
+                possible_state, next_player = move(board, i, stealing)
+                if next_player != -1:
+                    state = Node(possible_state, next_player == 1)
+                    self.possible_states.append(state)
     
     def buildTree(self, depth_limit, stealing = True):
         if depth_limit == 0:
@@ -79,7 +86,7 @@ class Node:
             print('\n\n\n')
 
 
-board = [0,0,0,0,2,0,1,
+board = [0,0,0,0,2,1,0,
          4,0,0,0,0,0,0]
 
 game = Node(board)
