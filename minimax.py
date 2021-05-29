@@ -23,7 +23,7 @@ class Node:
     def getStates(self, stealing = True):
         if self.maximizer:
             for i in range(6):
-                possible_state, next_player = move(board, i, stealing)
+                possible_state, next_player = move(self.board, i, stealing)
                 if next_player != -1:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
