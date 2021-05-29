@@ -9,12 +9,27 @@ from minimax import *
 
 board =[4,4,4,4,4,4,0,
         4,4,4,4,4,4,0]
+
+
 print("to start first press 1 else press 2:")
+
+
 player=int(input())
 
-if player == 1:
+print("for stealing write True else write False:")
+
+stealing= string(input())
+
+# first 
+if player == 1: # player 1 is AI
     game = Node(board)
     game.buildTree(3, False)
-    score, best_state = game.minimax()
-
+    score, board = game.minimax()
     
+#player 2 is the human 
+else: 
+    print("Choose your pit:")
+    idx =int(input())
+    board, next_player =move(board,idx-1, stealing)
+    
+
