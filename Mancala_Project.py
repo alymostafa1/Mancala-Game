@@ -54,10 +54,7 @@ def move(board, idx, stealing = True):
             board[i] += 1
      
     for i in range(inc):
-        if final_idx == 0 : # Final idx = 0 and inc range(1), 0+0
-            board[(final_idx + i + 1)] += 1
-        else:     
-            board[(final_idx + i)] += 1
+        board[(final_idx + i + 1)] += 1
 
     # Final position (Final pocket)            
     final_pos = (final_idx + inc) % 1        
