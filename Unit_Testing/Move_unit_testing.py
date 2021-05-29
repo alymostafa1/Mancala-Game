@@ -1,6 +1,8 @@
+import sys
+sys.path.append( 'H:\kolya\4th year\2nd Term\Ai\Mancala_Game')
 
-from mancala_Game import *
-
+from ...Mancala_Game.Mancala_Project import * 
+# import Mancala_Project
 '''
 Unit Testing 
 '''
@@ -43,7 +45,8 @@ Status: Done
 
 
 '''
-# Testing round up around 13 and skipping opponent mancala 
+# Testing round up around 13 and skipping opponent mancala,
+// and stealing wont work on opponent pockets
 ## input:  board = [0,0,0,0,0,0, 0, 0,0,0,0,0,3, 0]
 ## Expected output:  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], next player is 1
 ## Status: Done
@@ -95,10 +98,22 @@ Status: Done
 '''
 ## Expected output: [1, 2, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0], next player is 2
 '''
-board=[0,1,0,0,10,0, 0, 0,0,0,0,0,0, 0]
-b, next_player = move(board, 4, False)
-print_board(b)
-print(b)
-print("Next player is: {}".format(int(next_player)))
+# board=[0,1,0,0,10,0, 0, 0,0,0,0,0,0, 0]
+# b, next_player = move(board, 4, False)
+# print_board(b)
+# print(b)
+# print("Next player is: {}".format(int(next_player)))
+
+'''
+# Further testing for stealing techniques  
+## input:  board = [4,4,4,4,4,4,   0,   4,4,4,4,4,4,   0]
+## Expected output: [4, 4, 0, 5, 5, 5, 1, 4, 4, 4, 4, 4, 4, 0] ,Next player is: 1
+## Status: Done
+'''
+# board = [0,0,0,0,2,0,  1,   4,0,0,0,0,0,   0]
+# b, next_player = move(board, 4)
+# print_board(b)
+# print(b)
+# print("Next player is: {}".format(int(next_player)))
 
 
