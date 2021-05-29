@@ -51,21 +51,26 @@ def move(board, idx, stealing = True):
             inc +=1
             continue
         else: 
-            board[i] += 1
-     
+            board[i] += 1 
+            
     for i in range(inc):
+<<<<<<< Updated upstream
         board[(final_idx + i + 1)] += 1
 
+=======
+        # TODO: Add a condition if the final_idx == 0, but dont increment the opponent mancala
+            board[((final_idx + i + 1)%14)] += 1
+            
+>>>>>>> Stashed changes
     # Final position (Final pocket)            
-    final_pos = (final_idx + inc) % 1        
+    final_pos = (final_idx + inc) % 14      
     '''
      Valid stealing 
     '''      
     if (player_1 and final_pos > 6):
         valid_stealing_flag = False
     elif (player_2 and final_pos < 6): 
-        valid_stealing_flag = False
-        
+        valid_stealing_flag = False        
     '''
     Stealing technique
     '''
@@ -92,8 +97,9 @@ def move(board, idx, stealing = True):
 
 # #   [0,1,2,3,4 ,5,6,7,8,9,10,11,12,13]
 
-board=[0,0,0,0,0, 0,0,0,0,0, 0, 0, 3, 0]
-b, next_player = move(board, 12)
+# board=[0,0,0,0,0,0,0,0,0,0, 0, 0, 8, 0]
+board = [0,0,3,0,0,9,0,1,7,0,2,3,7,0]
+b, next_player = move(board, 5)
 print_board(b)
 print(b)
 print("Next player is: {}".format(int(next_player)))

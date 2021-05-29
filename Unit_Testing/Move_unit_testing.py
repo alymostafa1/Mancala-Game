@@ -1,8 +1,8 @@
-import sys
-sys.path.append( 'H:\kolya\4th year\2nd Term\Ai\Mancala_Game')
+# # import sys
+# # sys.path.append( 'H:\kolya\4th year\2nd Term\Ai\Mancala_Game')
 
-from ...Mancala_Game.Mancala_Project import * 
-# import Mancala_Project
+# # from Mancala_Game.Mancala_Project  import * 
+# # import Mancala_Project
 '''
 Unit Testing 
 '''
