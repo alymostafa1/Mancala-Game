@@ -4,6 +4,14 @@ def print_board(board):
     print("|{}| \t\t\t\t\t  |{}|" .format(board[13], board[6]))
     # print("-----------------------------")
     print("| |",  board[0], "|" , board[1], "|"  , board[2], "|" , board[3], "|" , board[4], "|" , board[5], "| |" )
+
+def getWinner(board):
+    for i in range(6):
+        board[6]+=board[i]
+    for i in range(7,13):
+        board[13]+=board[i]
+    return board
+    
     
 def gameover(board):
     count=0 
