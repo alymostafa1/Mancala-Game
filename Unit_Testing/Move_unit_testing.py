@@ -22,7 +22,8 @@ Unit Testing
 '''
 # Simple stone movement 
 ## input: board = [1,0,0,0,0,0, 0,    0,0,0,0,0,0, 0]
-## Expected output: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , next player is 2
+## Expected output without stealing: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] , next player is 2
+## Expected output with stealing: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], next player is 2
 Status: Done
 '''
 
@@ -104,16 +105,6 @@ Status: Done
 # print(b)
 # print("Next player is: {}".format(int(next_player)))
 
-'''
-# Further testing for stealing techniques  
-## input:  board = [4,4,4,4,4,4,   0,   4,4,4,4,4,4,   0]
-## Expected output: [4, 4, 0, 5, 5, 5, 1, 4, 4, 4, 4, 4, 4, 0] ,Next player is: 1
-## Status: Done
-'''
-# board = [0,0,0,0,2,0,  1,   4,0,0,0,0,0,   0]
-# b, next_player = move(board, 4)
-# print_board(b)
-# print(b)
-# print("Next player is: {}".format(int(next_player)))
+
 
 

@@ -36,8 +36,10 @@ def move(board, idx, stealing = True):
     board = board.copy()
     if idx < 6: 
          player_1 = 1
+         next_player = 2
     else:
         player_2 = 2
+        next_player = 1
 
     pocket_val = board[idx]
     if pocket_val == 0 :
@@ -54,14 +56,9 @@ def move(board, idx, stealing = True):
             board[i] += 1 
             
     for i in range(inc):
-<<<<<<< Updated upstream
-        board[(final_idx + i + 1)] += 1
-
-=======
-        # TODO: Add a condition if the final_idx == 0, but dont increment the opponent mancala
-            board[((final_idx + i + 1)%14)] += 1
-            
->>>>>>> Stashed changes
+   # TODO: Add a condition if the final_idx == 0, but dont increment the opponent mancala
+        board[((final_idx + i + 1)%14)] += 1
+                    
     # Final position (Final pocket)            
     final_pos = (final_idx + inc) % 14      
     '''
@@ -87,9 +84,9 @@ def move(board, idx, stealing = True):
                     board[13] += board[final_pos]
                     board[final_pos] = 0  
                     
-    if(player_1 and (final_pos) == 6) or player_2:
+    if(player_1 and (final_pos) == 6):
         next_player = 1    
-    elif (player_2 and (final_pos == 13)) or player_1 :  # Final play          
+    elif (player_2 and (final_pos == 13)):  # Final play          
         next_player = 2
                     
     return board , next_player
@@ -97,12 +94,11 @@ def move(board, idx, stealing = True):
 
 # #   [0,1,2,3,4 ,5,6,7,8,9,10,11,12,13]
 
-# board=[0,0,0,0,0,0,0,0,0,0, 0, 0, 8, 0]
-board = [0,0,3,0,0,9,0,1,7,0,2,3,7,0]
-b, next_player = move(board, 5)
-print_board(b)
-print(b)
-print("Next player is: {}".format(int(next_player)))
+# board=[0,0,0,0,10,0, 0,    0,0,0,0,0,0, 0]
+# b, next_player = move(board, 4)
+# print_board(b)
+# print(b)
+# print("Next player is: {}".format(int(next_player)))
 
 
 
