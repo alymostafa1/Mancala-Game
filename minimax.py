@@ -38,12 +38,12 @@ class Node:
     def minimax(self):
         
         if len(self.possible_states) == 0: ### GET SCORE
-            score = self.board[6] - self.board[13]
+            score = abs(self.board[6] - self.board[13])
             return score, None
         
         if gameover(self.board):
             #### FUNCTION TO COLLECT STONES IN EACH PLAYER'S MANCALA --- RETURN BOARD ####
-            score = self.board[6] - self.board[13]
+            score = abs(self.board[6] - self.board[13])
             return score, None
             
         best_state = None
