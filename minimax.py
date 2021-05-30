@@ -7,7 +7,7 @@ def playTurn(board, depth_limit, stealing = True):
     game.buildTree(depth_limit, stealing)
     score, best_state, best_player = game.minimax()
     
-    return best_state, best_player, score
+    return best_state, best_player
 
 
 class Node:
@@ -122,5 +122,5 @@ class Node:
 
 # depth_limit = 8
 # stealing = True
-# best_state,_, score = playTurn(board, depth_limit, stealing)
+# best_state,_ = playTurn(board, depth_limit, stealing)
 # print(best_state)
