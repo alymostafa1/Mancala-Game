@@ -29,44 +29,71 @@ depth_limit = int(input())
 
 # TODO: When Ai play two times show to the user that he is going to play 2 times --> Done
 # TODO: Add a condition on the pocket the Human choose, Between 7-12
-# TODO: Game difficulty Based on depth ---> Done
+# TODO: Game difficulty Based on depth 
 # TODO: Clear the terminal after Every Play 
 # TODO: Add the time Limti for the Human player 
 # TODO: Add the bonus feature of saving and loading the Game 
+#next_player=player
+
 while (gameover(board)!= 1):
     # player 1 is AI
-    if player == 1: 
+    if player == 1:  #AI will play
         next_board, next_player= playTurn(board, depth_limit, stealing)
-        if (player == next_player): 
-            print("Player_1 got another turn \n")            
-            print_board(next_board)
+        #print(next_player)
+        #print(next_board, next_player)
+        print_board(next_board)
+        print("\n")
+        if (player == next_player):    
+            #print_board(next_board)
             player=next_player
-            board=next_board    
+            board=next_board 
+            print("Player_1 got another turn \n")
+            next_board, next_player= playTurn(board, depth_limit, stealing)
+            #print(next_board, next_player)
+            print_board(next_board)
+            print("\n")
+            player=next_player
+            board=next_board 
             time.sleep(3)
+            print("It's Now Human's Turn \n")
         else:   
-            time.sleep(3)
             player=next_player
             board=next_board
-            print_board(next_board)
-            print("It's Now your Turn \n")
+            time.sleep(3)
+            #print_board(next_board)
+            print("It's Now Human's Turn \n")
         
-     
     #player 2 is the human 
-    else: 
-        print("Choose your pit [7-12]:")
+    else:  #Human will play
+        print("Choose your pit [7-12]:   **Side-note: You have 15 seconds to choose**")
+        t1 = time.time()
         idx =int(input())
-        next_board, next_player =move(board,idx-1, stealing)
+        t2 = time.time()
+        t=t2-t1
+        if t > 15:
+            print("You have run out of time!")
+            break
+        next_board, next_player =move(board,idx, stealing)
+        #print(next_board, next_player)
+        print_board(next_board)
+        print("\n")
         player= next_player
         board= next_board
-    cls = lambda: system('cls') 
+        print("It's Now AI's Turn \n")
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
-winner= getwinner(board)
 
-if winner < 0 :
-    print("player 2 is the winner")
-elif winner >0:
-    print("Player 1 is the winner")
+if (gameover(board) != 1):  # Game ends because user is run out of time
+    print("End 0f Game!")
 else:
-    print("Tie")
+    winner= getwinner(board)
+    if winner < 0 :
+        print("player 2 is the winner")
+    elif winner > 0:
+        print("Player 1 is the winner")
+    else:
+        print("Tie")
+    
+    
     
     
