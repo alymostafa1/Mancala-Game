@@ -107,11 +107,11 @@ def move(board, idx, stealing = True):
 
 # #   [0,1,2,3,4 ,5,6,7,8,9,10,11,12,13]
 
-# board=[0,0,0,0,10,0, 0,    0,0,0,0,0,0, 0]
-# b, next_player = move(board, 4)
-# print_board(b)
-# print(b)
-# print("Next player is: {}".format(int(next_player)))
+board=[0,0,0,0,2,1, 1,    1,0,0,0,0,0, 0] 
+b, next_player = move(board, 7)
+print_board(b)
+print(b)
+print("Next player is: {}".format(int(next_player)))
 
 
 

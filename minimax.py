@@ -118,4 +118,4 @@ class Node:
 # depth_limit = 8
 # stealing = True
 # best_state = playTurn(board, depth_limit, stealing)
-#print("best_state is :",best_state)
+# print("best_state is :",best_state)
