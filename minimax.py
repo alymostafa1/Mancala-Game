@@ -57,13 +57,13 @@ class Node:
         
     def minimax(self):
         
-        if len(self.possible_states) == 0: ### GET SCORE
-            score = self.board[6] - self.board[13]
-            return score, None
-        
         if gameover(self.board):
             score = getWinner(self.board)
-            return score, None
+            return score, None, None
+        
+        if len(self.possible_states) == 0: ### GET SCORE
+            score = self.board[6] - self.board[13]
+            return score, None, None
             
         best_state = None
         best_player= None
@@ -112,10 +112,10 @@ class Node:
             print('\n\n\n')
 
 
-board = [0,0,0,0,2,1,0,
-         4,4,3,3,2,1,0]
 
-depth_limit = 3
-stealing = False
-best_state = playTurn(board, depth_limit, stealing)
-print("best_state is :",best_state)
+# board=[1,0,0,0,2,1, 0,    0,0,0,0,0,0, 1]
+
+# depth_limit = 8
+# stealing = True
+# best_state = playTurn(board, depth_limit, stealing)
+#print("best_state is :",best_state)

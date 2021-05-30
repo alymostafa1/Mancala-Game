@@ -6,6 +6,7 @@ def print_board(board):
     print("| |",  board[0], "|" , board[1], "|"  , board[2], "|" , board[3], "|" , board[4], "|" , board[5], "| |" )
 
 def getWinner(board):
+    board = board.copy()
     for i in range(6):
         board[6]+=board[i]
     for i in range(7,13):
