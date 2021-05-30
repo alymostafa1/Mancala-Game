@@ -51,7 +51,7 @@ def move(board, idx, stealing = True):
          next_player = 2
     else:
         player_2 = 2
-        next_player = 1
+        next_player =1
 
     pocket_val = board[idx]
     if pocket_val == 0 :
@@ -68,9 +68,9 @@ def move(board, idx, stealing = True):
             board[i] += 1 
             
     for i in range(inc):
-   # TODO: Add a condition if the final_idx == 0, but dont increment the opponent mancala
-        board[((final_idx + i + 1)%14)] += 1
-                    
+        # TODO: Add a condition if the final_idx == 0, but dont increment the opponent mancala
+            board[((final_idx + i + 1)%14)] += 1
+            
     # Final position (Final pocket)            
     final_pos = (final_idx + inc) % 14      
     '''
@@ -96,9 +96,9 @@ def move(board, idx, stealing = True):
                     board[13] += board[final_pos]
                     board[final_pos] = 0  
                     
-    if(player_1 and (final_pos) == 6):
+    if(player_1 and (final_pos) == 6) :
         next_player = 1    
-    elif (player_2 and (final_pos == 13)):  # Final play          
+    elif (player_2 and (final_pos == 13)) :  # Final play          
         next_player = 2
                     
     return board , next_player
