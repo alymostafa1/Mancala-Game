@@ -7,7 +7,7 @@ def playTurn(board, depth_limit, stealing = True):
     game.buildTree(depth_limit, stealing)
     score, best_state, best_player = game.minimax()
     
-    return best_state, best_player
+    return best_state, best_player, score
 
 
 class Node:
@@ -23,6 +23,7 @@ class Node:
         
     def getStates(self, stealing = True):
         if gameover(self.board):
+            self.board = getWinner(self.board)
             return
         
         if self.maximizer:
@@ -63,11 +64,11 @@ class Node:
         
     def minimax(self):
         
-        if gameover(self.board):
-            score = getWinner(self.board)
-            return score, None, None
+        # if gameover(self.board):
+        #     score = getWinner(self.board)
+        #     return score, None, None
         
-        if len(self.possible_states) == 0: ### GET SCORE
+        if len(self.possible_states) == 0:# and self.beta > self.alpha: ### GET SCORE
             score = self.board[6] - self.board[13]
             return score, None, None
             
@@ -117,10 +118,9 @@ class Node:
             print('\n\n\n')
 
 
+# board=[1,0,0,3,1,0, 0,    1,0,0,0,0,0, 0]
 
-# board=[0,0,0,3,1,0, 0,    1,0,0,0,0,0, 0]
-# print_board(board)
 # depth_limit = 8
 # stealing = True
-# best_state = playTurn(board, depth_limit, stealing)
-# print("best_state is :",best_state)
+# best_state,_, score = playTurn(board, depth_limit, stealing)
+# print(best_state)
