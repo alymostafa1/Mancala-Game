@@ -38,7 +38,7 @@ class Node:
                 
         else:
             for i in range(7,13):
-                possible_state, next_player = move(board, i, stealing)
+                possible_state, next_player = move(self.board, i, stealing)
                 if next_player != -1:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
@@ -116,9 +116,9 @@ class Node:
 
 
 
-# board=[1,0,0,0,2,1, 0,    0,0,0,0,0,0, 1]
+board=[1,0,0,0,2,1, 0,    1,0,0,0,0,0, 0]
 
-# depth_limit = 8
-# stealing = True
-# best_state = playTurn(board, depth_limit, stealing)
-# print("best_state is :",best_state)
+depth_limit = 8
+stealing = True
+best_state = playTurn(board, depth_limit, stealing)
+print("best_state is :",best_state)
