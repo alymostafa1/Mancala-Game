@@ -10,7 +10,11 @@ def getWinner(board):
         board[6]+=board[i]
     for i in range(7,13):
         board[13]+=board[i]
-    return board
+        
+    score = board[6] - board[13]
+    
+
+    return score 
     
     
 def gameover(board):
@@ -51,7 +55,7 @@ def move(board, idx, stealing = True):
 
     pocket_val = board[idx]
     if pocket_val == 0 :
-        print("Pocket is empty")
+        # print("Pocket is empty")
         return board , -1    
     board[idx] = 0
     for i in range(idx + 1 , pocket_val + idx + 1):

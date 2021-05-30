@@ -15,6 +15,7 @@ class Node:
         #self.depth = depth
         self.board = board
         self.possible_states = []
+        self.next_players=[]
         self.score = None
         self.maximizer = maximizer
         self.alpha = float('-inf')
@@ -27,15 +28,27 @@ class Node:
                 if next_player != -1:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
+                    self.next_players.append(next_player)
+                    print("next player:", next_player)
+                    print(possible_state)
+                
+                
         else:
             for i in range(7,13):
                 possible_state, next_player = move(board, i, stealing)
                 if next_player != -1:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
-    
+                    self.next_players.append(next_player)
+                    print("next player:", next_player)
+                    print(possible_state)
+                
+                
+                
     def buildTree(self, depth_limit, stealing = True):
+        print("Depth", depth_limit)
         if depth_limit == 0:
+            #print("game over")
             return 
         
         self.getStates(stealing)
@@ -50,18 +63,20 @@ class Node:
             return score, None
         
         if gameover(self.board):
-            board = getWinner(self.board)
-            score = self.board[6] - self.board[13]
+            score = getWinner(self.board)
             return score, None
             
         best_state = None
-        
         if self.maximizer: #### AI TURN - PLAYER1
             best = float('-inf')
             for state in self.possible_states:
-                val, _ = state.minimax()
+                
+                val,_= state.minimax()
+             
                 self.alpha = max(self.alpha, val)
                 if val > best:
+                    index= self.possible_states.index(state)
+                    best_player= self.next_players[index]
                     best = val
                     best_state = state
                 
@@ -70,17 +85,24 @@ class Node:
                 
         else: 
             best = float('inf')
+           
             for state in self.possible_states:
-                val, _ = state.minimax()
+         
+                val,_ = state.minimax()
+              
                 self.alpha = min(self.alpha, val)
                 if val < best:
+                    index= self.possible_states.index(state)
+                    best_player= self.next_players[index]
                     best = val
                     best_state = state
                     
+
                 if self.beta <= self.alpha:
                     break
+        print("best player:",best_player)
         
-        return best, best_state.board
+        return best, best_state.board 
    
     def printMoves(self):
         for state in self.possible_states:
@@ -89,8 +111,9 @@ class Node:
 
 
 board = [0,0,0,0,2,1,0,
-         4,0,0,0,0,0,0]
+         4,4,3,3,2,1,0]
+
 depth_limit = 3
 stealing = False
 best_state = playTurn(board, depth_limit, stealing)
-print(best_state)
+print("best_state is :",best_state)

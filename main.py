@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat May 29 20:34:42 2021
-
-@author: Aya El Ashry
-"""
 
 from minimax import *
 
@@ -11,25 +5,40 @@ board =[4,4,4,4,4,4,0,
         4,4,4,4,4,4,0]
 
 
-print("to start first press 1 else press 2:")
+print("to start first press 2 else press 1:")
 
 
 player=int(input())
 
-print("for stealing write True else write False:")
+print("for stealing write 1 else write 0:")
 
-stealing= string(input())
+stealing= int(input())
 
-# first 
-if player == 1: # player 1 is AI
-    game = Node(board)
-    game.buildTree(3, False)
-    score, board = game.minimax()
+depth_limit=1 
+
+while (gameover(board)!= 1):
+    # player 1 is AI
+    if player == 1:
+        next_board, next_player= playTurn(board, depth_limit, stealing)
+        player=next_player
+        board=next_board
     
-#player 2 is the human 
-else: 
-    print("Choose your pit:")
-    idx =int(input())
-    board, next_player =move(board,idx-1, stealing)
-    
+     
+    #player 2 is the human 
+    else: 
+        print("Choose your pit:")
+        idx =int(input())
+        next_board, next_player =move(board,idx-1, stealing)
+        player= next_player
+        board= next_board
 
+winner= getwinner(board)
+
+if winner < 0 :
+    print("player 2 is the winner")
+elif winner >0:
+    print("Player 1 is the winner")
+else:
+    print("Tie")
+    
+    
