@@ -28,12 +28,15 @@ class Node:
         if self.maximizer:
             for i in range(6):
                 possible_state, next_player = move(self.board, i, stealing)
+                #print(possible_state)
                 if next_player != -1:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
                     self.next_players.append(next_player)
                     #print("next player:", next_player)
-                    #print(possible_state)
+                    # print(possible_state)
+                    # print_board(possible_state)
+                    
                 
                 
         else:
@@ -48,7 +51,7 @@ class Node:
                 
                 
     def buildTree(self, depth_limit, stealing = True):
-        #print("Depth", depth_limit)
+        # print("Depth", depth_limit)
         if depth_limit == 0:
             #print("game over")
             return 
@@ -106,7 +109,6 @@ class Node:
                 if self.beta <= self.alpha:
                     break
         #print("best player:",best_player)
-        
         return best, best_state.board, best_player 
    
     def printMoves(self):
@@ -116,9 +118,9 @@ class Node:
 
 
 
-board=[1,0,0,0,2,1, 0,    1,0,0,0,0,0, 0]
-
-depth_limit = 8
-stealing = True
-best_state = playTurn(board, depth_limit, stealing)
-print("best_state is :",best_state)
+# board=[0,0,0,3,1,0, 0,    1,0,0,0,0,0, 0]
+# print_board(board)
+# depth_limit = 8
+# stealing = True
+# best_state = playTurn(board, depth_limit, stealing)
+# print("best_state is :",best_state)

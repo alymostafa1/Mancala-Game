@@ -9,13 +9,13 @@ print_board(board)
 print("\n")
 print("Ai already won the name Player_1, You are now Player_2\n")
 print('''You may choose to Start first or Let your rival start first, You may select 1 or 2: 
-                                                                     1. Show me your best move Ai!!!
-                                                                     2. I will show you my move first''')
+      1. Show me your best move Ai!!!
+      2. I will show you my move first''')
 player=int(input())
 
 print('''Plaese Choose: 
-                      1.Stealing Mode
-                      0.No Stealing Mode''')
+      0.No Stealing Mode
+      1.Stealing Mode''')
                       
 stealing= int(input())
 
@@ -37,6 +37,16 @@ time_out=int(input())
 # TODO: Add the time Limit for the Human player --> Done 
 # TODO: Add the bonus feature of saving and loading the Game 
 
+if player == 1:
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    print("Player_1 (AI) starts the game")
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    print("\n")
+else:
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    print("Player_2 (Human) starts the game")
+    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")  
+    print("\n")
 while (gameover(board)!= 1):
     # player 1 is AI
     if player == 1:  #AI will play
@@ -46,24 +56,18 @@ while (gameover(board)!= 1):
         print_board(next_board)
         print("\n")
         if (player == next_player):    
-            #print_board(next_board)
             player=next_player
             board=next_board 
-            print("Player_1 got another turn \n")
-            next_board, next_player= playTurn(board, depth_limit, stealing)
-            #print(next_board, next_player)
-            print_board(next_board)
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            print("Player_1 got another turn")
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
             print("\n")
-            player=next_player
-            board=next_board 
-            time.sleep(3)
-            print("It's Now Human's Turn \n")
         else:   
             player=next_player
             board=next_board
-            time.sleep(3)
-            #print_board(next_board)
-            print("It's Now Human's Turn \n")
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            print("It's Human's Turn Now ")
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         
     #player 2 is the human 
     else:  #Human will play
@@ -82,10 +86,21 @@ while (gameover(board)!= 1):
         #print(next_board, next_player)
         print_board(next_board)
         print("\n")
-        player= next_player
-        board= next_board
-        print("It's Now AI's Turn \n")
-    print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        if (player == next_player):    
+            player=next_player
+            board=next_board 
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            print("Player_2 got another turn ")
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            print("\n")
+        else:   
+            player=next_player
+            board=next_board
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            print("It's AI's Turn Now")
+            print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
+    
 
 
 if (gameover(board) != 1):  # Game ends because user is run out of time
