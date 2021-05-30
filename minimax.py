@@ -22,6 +22,9 @@ class Node:
         self.beta = float('inf')
         
     def getStates(self, stealing = True):
+        if gameover(self.board):
+            return
+        
         if self.maximizer:
             for i in range(6):
                 possible_state, next_player = move(self.board, i, stealing)
