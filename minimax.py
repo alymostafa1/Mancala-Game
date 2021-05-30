@@ -5,9 +5,9 @@ from Mancala_Project import *
 def playTurn(board, depth_limit, stealing = True):
     game = Node(board)
     game.buildTree(depth_limit, stealing)
-    score, best_state = game.minimax()
+    score, best_state, best_player = game.minimax()
     
-    return best_state
+    return best_state, best_player
 
 
 class Node:
@@ -29,8 +29,8 @@ class Node:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
                     self.next_players.append(next_player)
-                    print("next player:", next_player)
-                    print(possible_state)
+                    #print("next player:", next_player)
+                    #print(possible_state)
                 
                 
         else:
@@ -40,13 +40,12 @@ class Node:
                     state = Node(possible_state, next_player == 1)
                     self.possible_states.append(state)
                     self.next_players.append(next_player)
-                    print("next player:", next_player)
-                    print(possible_state)
-                
+                    #print("next player:", next_player)
+                    #print(possible_state)
                 
                 
     def buildTree(self, depth_limit, stealing = True):
-        print("Depth", depth_limit)
+        #print("Depth", depth_limit)
         if depth_limit == 0:
             #print("game over")
             return 
@@ -67,17 +66,19 @@ class Node:
             return score, None
             
         best_state = None
+        best_player= None
         if self.maximizer: #### AI TURN - PLAYER1
             best = float('-inf')
             for state in self.possible_states:
                 
-                val,_= state.minimax()
+                val= state.minimax()
              
-                self.alpha = max(self.alpha, val)
-                if val > best:
+                self.alpha = max(self.alpha, val[0])
+                if val[0] > best:
                     index= self.possible_states.index(state)
+                    #print("index is:",index)
                     best_player= self.next_players[index]
-                    best = val
+                    best = val[0]
                     best_state = state
                 
                 if self.beta <= self.alpha:
@@ -88,21 +89,22 @@ class Node:
            
             for state in self.possible_states:
          
-                val,_ = state.minimax()
+                val= state.minimax()
               
-                self.alpha = min(self.alpha, val)
-                if val < best:
+                self.alpha = min(self.alpha, val[0])
+                if val[0] < best:
                     index= self.possible_states.index(state)
+                    #print("index is:",index)
                     best_player= self.next_players[index]
-                    best = val
+                    best = val[0]
                     best_state = state
                     
 
                 if self.beta <= self.alpha:
                     break
-        print("best player:",best_player)
+        #print("best player:",best_player)
         
-        return best, best_state.board 
+        return best, best_state.board, best_player 
    
     def printMoves(self):
         for state in self.possible_states:
