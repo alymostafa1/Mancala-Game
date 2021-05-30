@@ -1,8 +1,8 @@
 
 from minimax import *
 import time 
-from os import system 
 
+        
 board =[4,4,4,4,4,4,0,
         4,4,4,4,4,4,0]
 print_board(board)
@@ -27,13 +27,15 @@ print(''' Choose the game difficulty:
      
 depth_limit = int(input())
 
+print("Enter the time you required to play ")
+time_out=int(input())
+
 # TODO: When Ai play two times show to the user that he is going to play 2 times --> Done
-# TODO: Add a condition on the pocket the Human choose, Between 7-12
-# TODO: Game difficulty Based on depth 
+# TODO: Add a condition on the pocket the Human choose, Between 7-12 --> Done
+# TODO: Game difficulty Based on depth --> Done
 # TODO: Clear the terminal after Every Play 
-# TODO: Add the time Limti for the Human player 
+# TODO: Add the time Limit for the Human player --> Done 
 # TODO: Add the bonus feature of saving and loading the Game 
-#next_player=player
 
 while (gameover(board)!= 1):
     # player 1 is AI
@@ -68,9 +70,12 @@ while (gameover(board)!= 1):
         print("Choose your pit [7-12]:   **Side-note: You have 15 seconds to choose**")
         t1 = time.time()
         idx =int(input())
+        while(idx < 7 or idx > 12):
+            print("You entered wrong pocket index,, Please Re-enter you pit between [7-12]")
+            idx=int(input())
         t2 = time.time()
         t=t2-t1
-        if t > 15:
+        if t > time_out:
             print("You have run out of time!")
             break
         next_board, next_player =move(board,idx, stealing)
