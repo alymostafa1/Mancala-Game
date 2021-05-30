@@ -1,6 +1,7 @@
 
 from minimax import *
 import time 
+from os import system 
 
 board =[4,4,4,4,4,4,0,
         4,4,4,4,4,4,0]
@@ -15,24 +16,32 @@ player=int(input())
 print('''Plaese Choose: 
                       1.Stealing Mode
                       0.No Stealing Mode''')
+                      
 stealing= int(input())
-depth_limit = 1 
+
+print(''' Choose the game difficulty:
+      1- Easy 
+      2- Intermediate 
+      3- Hard 
+      ''')
+     
+depth_limit = int(input())
 
 # TODO: When Ai play two times show to the user that he is going to play 2 times --> Done
 # TODO: Add a condition on the pocket the Human choose, Between 7-12
-# TODO: Game difficulty Based on depth 
+# TODO: Game difficulty Based on depth ---> Done
 # TODO: Clear the terminal after Every Play 
 # TODO: Add the time Limti for the Human player 
 # TODO: Add the bonus feature of saving and loading the Game 
 while (gameover(board)!= 1):
     # player 1 is AI
-    if player == 1:
+    if player == 1: 
         next_board, next_player= playTurn(board, depth_limit, stealing)
         if (player == next_player): 
             print("Player_1 got another turn \n")            
             print_board(next_board)
             player=next_player
-            board=next_board            
+            board=next_board    
             time.sleep(3)
         else:   
             time.sleep(3)
@@ -41,7 +50,6 @@ while (gameover(board)!= 1):
             print_board(next_board)
             print("It's Now your Turn \n")
         
-    
      
     #player 2 is the human 
     else: 
@@ -50,6 +58,7 @@ while (gameover(board)!= 1):
         next_board, next_player =move(board,idx-1, stealing)
         player= next_player
         board= next_board
+    cls = lambda: system('cls') 
 
 winner= getwinner(board)
 
