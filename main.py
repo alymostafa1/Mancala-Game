@@ -1,8 +1,5 @@
 from minimax import *
 
-
-
-
 greeting_list= ['XXXXXXXXXXXXXXXXXXXXXXXX' ,'--Welcome to Agmad-Mancala--', 'XXXXXXXXXXXXXXXXXXXXXXXX'] 
 Center_Drawing_List(greeting_list)
 

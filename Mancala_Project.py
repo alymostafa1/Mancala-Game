@@ -46,17 +46,10 @@ def getWinner(board):
         board[13]+=board[i]
         board[i]=0
         
-<<<<<<< HEAD
     score = board[6] - board[13]
     return score 
  
 def NewGame():
-=======
-    #score = board[6] - board[13]
-    
-
-    return board 
->>>>>>> bba6c61c6f73c5cd74b89ea6614c730066f03aa3
     
     board =[4,4,4,4,4,4,0,
         4,4,4,4,4,4,0]
