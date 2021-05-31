@@ -1,9 +1,41 @@
+import time 
+import sys
+from pytimedinput import timedInput
+
 def print_board(board):
     print("| |" ,  board[12], "|" , board[11], "|"  , board[10], "|" , board[9], "|" , board[8], "|" , board[7], "| |" )
     # print("-----------------------------")
     print("|{}| \t\t\t\t\t  |{}|" .format(board[13], board[6]))
     # print("-----------------------------")
     print("| |",  board[0], "|" , board[1], "|"  , board[2], "|" , board[3], "|" , board[4], "|" , board[5], "| |" )
+
+def ToString(String):
+    List_2 = []
+    String = str(String)[1:-2]
+    String = String.replace(" ", "")
+    List =  list(String.split(","))    
+    for i in List:
+        List_2.append(int(i))
+    return List_2
+
+def Center_Drawing_List(List ):
+
+    for i in range(len(List)):
+        txt = List[i]
+        x = txt.center(80, 'X')
+        print(x)
+
+def Center_Drawing_String(String):
+    x = String.center(80, 'X')
+    print(x)
+
+def Center_Drawing_String_Circles(String):
+    x = String.center(80, 'O')
+    print(x)
+def Center_Drawing_String_Null(String):
+    x = String.center(80)
+    print(x)
+        
 
 def getWinner(board):
     board = board.copy()
@@ -13,11 +45,54 @@ def getWinner(board):
         board[13]+=board[i]
         
     score = board[6] - board[13]
-    
-
     return score 
+ 
+def NewGame():
     
+    board =[4,4,4,4,4,4,0,
+        4,4,4,4,4,4,0]
+    print_board(board)
+    print("\n")
+    print("Ai already won the name Player_1, You are now Player_2\n")
+    print('''You may choose to Start first or Let your rival start first, You may select 1 or 2: 
+          1. Show me your best move Ai!!!
+          2. I will show you my move first''')
+    player=int(input())
     
+    print('''Plaese Choose: 
+          0.No Stealing Mode
+          1.Stealing Mode''')                      
+    stealing= int(input())
+    
+    print(''' Choose the game difficulty:
+          1- Easy 
+          2- Intermediate 
+          3- Hard 
+          ''')     
+    depth_limit = int(input())
+    print("Enter the time you required to play ")
+    time_out=int(input())
+    
+    return (board, player, stealing, depth_limit, time_out)
+        
+def SaveGame(next_board,next_player, stealing, depth_limit):
+    with open("LastGame.txt", "w") as output:
+            output.write(str(next_board))
+            output.write('\n')
+            output.write(str(next_player))
+            output.write('\n')
+            output.write(str(stealing))
+            output.write('\n')
+            output.write(str(depth_limit))
+            output.write('\n')
+            
+def RestoreGame():
+    f = open("LastGame.txt", "r")
+    Game = []
+    for x in f: 
+        Game.append(x)
+    return Game        
+        
 def gameover(board):
     count=0 
     count1=0
@@ -113,10 +188,13 @@ def move(board, idx, stealing = True):
 #print(b)
 #print("Next player is: {}".format(int(next_player)))
 
+# w = NewGame()
+# print(w[0])
 
+# w = RestoreGame()
+# print(w[2])
 
-
-
-
+# List = "[4, 4, 0, 5, 5, 5, 1, 4, 4, 4, 4, 4, 4, 0]"
+# print(ToString(List))
 
 
