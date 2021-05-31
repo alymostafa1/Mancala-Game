@@ -41,6 +41,8 @@ elif Game_Type == 2: ## Loaded Game
 # TODO: Add the bonus feature of saving and loading the Game --> Done
 # TODO: Maybe Tweak the Save Game part so it wouldn't ask to save every 2 sec 
 
+# FIXME: it's Ai turn Now is printed at the wrong time
+
 
 if player == 1:
     Player_List = ['XXXXXXXXXXXXXXXXXXXXXXXX' ,'--Player_1 (AI) starts the game--', 'XXXXXXXXXXXXXXXXXXXXXXXX']
