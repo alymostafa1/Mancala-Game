@@ -78,13 +78,13 @@ while (gameover(board)!= 1):
         t1 = time.time()
         idx =int(input())      
         while(idx < 7 or idx > 12):
-            print("You entered wrong pocket index,, Please Re-enter you pit between [7-12]")
+            print("You entered wrong pocket index,, Please Re-enter your pit between [7-12]")
             idx=int(input())            
         t2 = time.time()
         t=t2-t1
-        if t > time_out:
-            print("You have run out of time!")
-            break
+        # if t > time_out:
+        #     print("You have run out of time!")
+        #     break
         next_board, next_player =move(board,idx, stealing)
 
         print_board(next_board)
@@ -110,10 +110,12 @@ while (gameover(board)!= 1):
 if (gameover(board) != 1):  # Game ends because user is run out of time
     print("End 0f Game!")
 else:
-    winner= getwinner(board)
+    winner, board = getWinner(board)
     if winner < 0 :
+        print_board(board)
         print("player 2 is the winner")
     elif winner > 0:
+        print_board(board)
         print("Player 1 is the winner")
     else:
         print("Tie")

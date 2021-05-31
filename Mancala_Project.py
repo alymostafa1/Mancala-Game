@@ -19,7 +19,6 @@ def ToString(String):
     return List_2
 
 def Center_Drawing_List(List ):
-
     for i in range(len(List)):
         txt = List[i]
         x = txt.center(80, 'X')
@@ -47,7 +46,7 @@ def getWinner(board):
         board[i]=0
         
     score = board[6] - board[13]
-    return score 
+    return score, board 
  
 def NewGame():
     
