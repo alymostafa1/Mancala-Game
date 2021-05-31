@@ -23,7 +23,7 @@ class Node:
         
     def getStates(self, stealing = True):
         if gameover(self.board):
-            self.board = getWinner(self.board)
+            _, self.board = getWinner(self.board)
             return
         
         if self.maximizer:
@@ -118,9 +118,11 @@ class Node:
             print('\n\n\n')
 
 
-# board=[1,0,0,3,1,0, 0,    1,0,0,0,0,0, 0]
+# board=[4,4,4,4,4,4, 0,    4,4,4,4,4,4, 0]
 
-# depth_limit = 8
+# depth_limit = 7
 # stealing = True
+# start = time.time()
 # best_state,_ = playTurn(board, depth_limit, stealing)
 # print(best_state)
+# print(str(time.time() - start) + "seconds")

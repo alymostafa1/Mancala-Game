@@ -13,7 +13,7 @@ if Game_Type == 1: ## New Game
     board = Val[0]
     player = int(Val[1])
     stealing = int(Val[2])
-    depth_limit = int(Val[3])
+    game_level = int(Val[3])
     time_out = float(Val[4])
     
 elif Game_Type == 2: ## Loaded Game
@@ -21,7 +21,7 @@ elif Game_Type == 2: ## Loaded Game
    board = ToString(Val[0])
    player = int(Val[1])
    stealing = int(Val[2])
-   depth_limit = int(Val[3])
+   game_level = int(Val[3])
    time_out = float(Val[4])
    Center_Drawing_String("--Your Game is being loaded--")
    print('\n')
@@ -32,7 +32,16 @@ elif Game_Type == 2: ## Loaded Game
    time.sleep(1)   
    print("Stealing Mode "+ Val[2])
    time.sleep(1)   
-        
+
+if game_level == 1:
+    depth_limit = 7
+elif game_level == 2:
+    depth_limit = 8
+elif game_level == 3:
+    depth_limit = 9
+else:
+    depth_limit = 5
+      
 # TODO: When Ai play two times show to the user that he is going to play 2 times --> Done
 # TODO: Add a condition on the pocket the Human choose, Between 7-12 --> Done
 # TODO: Game difficulty Based on depth --> Done
