@@ -62,21 +62,31 @@ else:
     Center_Drawing_List(Player_List)  
     print("\n")
 time.sleep(3)  
-  
+# counter =0 
 while (gameover(board)!= 1):
+    # counter =counter+1 
     # player 1 is AI
     if player == 1:  #AI will play
         next_board, next_player= playTurn(board, depth_limit, stealing)
         print_board(next_board)
         print("\n")
+        
+
         if (player == next_player):    
             player=next_player
             board=next_board 
             Center_Drawing_String("-- Player 1 got another turn --")
             print("\n")
-        else:   
+            
+        else:
+               
             player=next_player
             board=next_board
+            Center_Drawing_String_Circles('''Now, It's player 2 turn, Would you like to save the game and continue later: Y/N ?''')
+            EndGame = input()
+            if ((EndGame == 'Y' or EndGame =='y')): 
+                SaveGame(next_board,next_player, stealing, depth_limit)
+                sys.exit()     
             Center_Drawing_String("-- Player 2 is playing now --")
             print("\n")
         
@@ -84,7 +94,6 @@ while (gameover(board)!= 1):
     else:  #Human will play
         print("Choose your pit [7-12]: ")
        # print("Choose your pit [7-12]:   **Side-note: You have seconds "+ str(time_out) +" to choose**")
-
         t1 = time.time()
         # time_left=time_left-1 
         # print("you have "+ str(time_left) +" seconds left")
@@ -99,27 +108,31 @@ while (gameover(board)!= 1):
         #     break
         
         next_board, next_player =move(board,idx, stealing)
-
         print_board(next_board)
         print("\n")
+
         if (player == next_player):    
             player=next_player
             board=next_board 
             Center_Drawing_String("--Player 2 got another turn--")
             print("\n")
-        else:   
+        else:
             player=next_player
             board=next_board
-            Center_Drawing_String("--Player 1 is playing Now--")
-            print("\n")
+            # save/load
+            Center_Drawing_String_Circles('''Now, It's player 1 turn, Would you like to save the game and continue later: Y/N ?''')
+            EndGame = input()
+            if ((EndGame == 'Y' or EndGame =='y')): 
+                SaveGame(next_board,next_player, stealing, depth_limit)
+                sys.exit()   
             
-    if (player != next_player):
-        Center_Drawing_String_Circles(''' Would you like to save the game and continue later: Yes, No  ''')
-        EndGame = input()
-        if ((EndGame == 'Yes')): 
-            SaveGame(next_board,next_player, stealing, depth_limit)
-            sys.exit()
-        
+            Center_Drawing_String("--Player 1 is playing Now--")
+            print("\n") 
+            
+      
+             
+
+    
 if (gameover(board) != 1):  # Game ends because user is run out of time
     print("End 0f Game!")
 else:
