@@ -71,10 +71,10 @@ def NewGame():
           3- Hard 
           ''')     
     depth_limit = int(input())
-    print("Enter the time you required to play ")
-    time_out=int(input())
+    # print("Enter the time you required to play ")
+    # time_out=int(input())
     
-    return (board, player, stealing, depth_limit, time_out)
+    return (board, player, stealing, depth_limit)
         
 def SaveGame(next_board,next_player, stealing, depth_limit):
     with open("LastGame.txt", "w") as output:

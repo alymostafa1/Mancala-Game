@@ -14,7 +14,6 @@ if Game_Type == 1: ## New Game
     player = int(Val[1])
     stealing = int(Val[2])
     game_level = int(Val[3])
-    time_out = float(Val[4])
     
 elif Game_Type == 2: ## Loaded Game
    Val = RestoreGame()
@@ -22,7 +21,7 @@ elif Game_Type == 2: ## Loaded Game
    player = int(Val[1])
    stealing = int(Val[2])
    game_level = int(Val[3])
-   time_out = float(Val[4])
+
    Center_Drawing_String("--Your Game is being loaded--")
    print('\n')
    time.sleep(1)   
@@ -73,18 +72,22 @@ while (gameover(board)!= 1):
         if (player == next_player):    
             player=next_player
             board=next_board 
-            Center_Drawing_String("--Player_1 got another turn--")
+            Center_Drawing_String("-- Player 1 got another turn --")
             print("\n")
         else:   
             player=next_player
             board=next_board
-            Center_Drawing_String("--It's Human's Turn Now--")
+            Center_Drawing_String("-- Player 2 is playing now --")
             print("\n")
         
     #player 2 is the human 
     else:  #Human will play
-        print("Choose your pit [7-12]:   **Side-note: You have 15 seconds to choose**")
+        print("Choose your pit [7-12]: ")
+       # print("Choose your pit [7-12]:   **Side-note: You have seconds "+ str(time_out) +" to choose**")
+
         t1 = time.time()
+        # time_left=time_left-1 
+        # print("you have "+ str(time_left) +" seconds left")
         idx =int(input())      
         while(idx < 7 or idx > 12):
             print("You entered wrong pocket index,, Please Re-enter your pit between [7-12]")
@@ -94,6 +97,7 @@ while (gameover(board)!= 1):
         # if t > time_out:
         #     print("You have run out of time!")
         #     break
+        
         next_board, next_player =move(board,idx, stealing)
 
         print_board(next_board)
@@ -101,12 +105,12 @@ while (gameover(board)!= 1):
         if (player == next_player):    
             player=next_player
             board=next_board 
-            Center_Drawing_String("--Player_2 got another turn--")
+            Center_Drawing_String("--Player 2 got another turn--")
             print("\n")
         else:   
             player=next_player
             board=next_board
-            Center_Drawing_String("--It's AI's Turn Now--")
+            Center_Drawing_String("--Player 1 is playing Now--")
             print("\n")
             
     if (player != next_player):
