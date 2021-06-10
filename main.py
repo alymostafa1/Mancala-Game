@@ -6,8 +6,7 @@ Center_Drawing_List(greeting_list)
 print('''
       1. To start a new game
       2. To load previous game''')
-Game_Type =  int(input())
-      
+Game_Type =  int(input())      
 if Game_Type == 1: ## New Game
     Val = NewGame()
     board = Val[0]
@@ -62,7 +61,7 @@ else:
     Center_Drawing_List(Player_List)  
     print("\n")
 time.sleep(3)  
-# counter =0 
+
 while (gameover(board)!= 1):
     # counter =counter+1 
     # player 1 is AI
@@ -71,15 +70,13 @@ while (gameover(board)!= 1):
         print_board(next_board)
         print("\n")
         
-
         if (player == next_player):    
             player=next_player
             board=next_board 
             Center_Drawing_String("-- Player 1 got another turn --")
             print("\n")
             
-        else:
-               
+        else:               
             player=next_player
             board=next_board
             Center_Drawing_String_Circles('''Now, It's player 2 turn, Would you like to save the game and continue later: Y/N ?''')
@@ -93,19 +90,12 @@ while (gameover(board)!= 1):
     #player 2 is the human 
     else:  #Human will play
         print("Choose your pit [7-12]: ")
-       # print("Choose your pit [7-12]:   **Side-note: You have seconds "+ str(time_out) +" to choose**")
-        t1 = time.time()
-        # time_left=time_left-1 
-        # print("you have "+ str(time_left) +" seconds left")
+
         idx =int(input())      
         while(idx < 7 or idx > 12):
             print("You entered wrong pocket index,, Please Re-enter your pit between [7-12]")
             idx=int(input())            
-        t2 = time.time()
-        t=t2-t1
-        # if t > time_out:
-        #     print("You have run out of time!")
-        #     break
+
         
         next_board, next_player =move(board,idx, stealing)
         print_board(next_board)
@@ -119,6 +109,7 @@ while (gameover(board)!= 1):
         else:
             player=next_player
             board=next_board
+            
             # save/load
             Center_Drawing_String_Circles('''Now, It's player 1 turn, Would you like to save the game and continue later: Y/N ?''')
             EndGame = input()
