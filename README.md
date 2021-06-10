@@ -20,17 +20,29 @@ As setup, Each pit should contain 4 stones except for the mancala. On each turn,
 
 ## Implementation:
 
-The Mancala project is implemented using Python3, The mancala algorithm is based on **minimax decision rule with alpha-beta pruning**. The player plays against an AI player using the console.  
+The Mancala project is implemented using Python3, The mancala algorithm is based on **minimax decision rule with alpha-beta pruning**. The player plays against an AI player using the console.    
+The implementation consists of 3 source files: mancala, minimax and main. Each of these codes perform certain functions.   
 
 ## Algorithm:
 
+**The mancala** file consists of 4 functions: 
+   * print_board
+   * getwinner
+   * gameover 
+   * move.  
+
+**The minimax** file **consists of a class called Node** which contains 4 functions:  
+   * getStates 
+   * buildTree 
+   * minimax 
+   * print_moves.   
+
+Lastly, **the main** file integrates both last 2 files and implement the game flow. 
 ## Overview Demo:  
 
 ## Requirements:
  * python 3.8.5
  
-## Installation:
-
 ## Team Members:
   * Aly Moustafa El-Kady
   * Aya Tarek El-Ashry
