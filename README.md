@@ -12,9 +12,9 @@
 As setup, Each pit should contain 4 stones except for the mancala. On each turn, the player will take all the stones from any of his/hers pit and deposit one stone in each pit. The player should skip his/hers opponent’s mancala. If the player's last stone lands in his/her own mancala, the player may take another turn.
 
 **The Mancala game has two modes:** 
-  * Stealing  
+  * **Stealing**  
     ==> Stealing mode is if the player’s last stone lands on an empty pit, the player should capture the stones in his/her own pit and the stones in his/her opponent’s pit directly across the player’s pit.
-  * No Stealing. 
+  * **No Stealing.** 
  
 **Game is OVER** when one of the player’s pits are all empty, by then the other player can capture all the stones left in his/her pits and place it in his/her mancala. **The winner** is the player with the most stones in his/her mancala. 
 
