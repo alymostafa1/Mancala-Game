@@ -41,6 +41,9 @@ The implementation consists of 3 source files: mancala, minimax and main. Each o
    * getwinner
    * gameover 
    * move.  
+   * SaveGame 
+   * RestoreGame
+   * NewGame 
 
 **The minimax** file **consists of a class called Node** which contains 4 functions:  
    * getStates 
