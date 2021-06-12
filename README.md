@@ -21,7 +21,7 @@ As setup, Each pit should contain 4 stones except for the mancala. On each turn,
 **The Mancala Game has 3 Difficulty Levels:**  
    * **Easy (Depth = 7)** ==> this takes less than 1 seconds.
    * **Intermediate ( Depth = 8)** ==> this takes less than 5 seconds.
-   * **Hard ( Depth = 9)** ==> this takes around 25 seconds.  
+   * **Hard ( Depth = 9)** ==> this takes around 23 seconds.  
    
 ## Algorithm:
 **MiniMax with Alpha-beta pruning Algorithm** is used which is an ARTIFICIAL INTELLIGENCE solution for Game tress:
@@ -41,6 +41,9 @@ The implementation consists of 3 source files: mancala, minimax and main. Each o
    * getwinner
    * gameover 
    * move.  
+   * SaveGame 
+   * RestoreGame
+   * NewGame 
 
 **The minimax** file **consists of a class called Node** which contains 4 functions:  
    * getStates 
