@@ -124,19 +124,17 @@ while (gameover(board)!= 1):
              
 
     
-if (gameover(board) != 1):  # Game ends because user is run out of time
-    print("End 0f Game!")
+
+winner, board = getWinner(board)
+if winner < 0 :
+    print_board(board)
+    print("player 2 is the winner")
+elif winner > 0:
+    print_board(board)
+    print("Player 1 is the winner")
 else:
-    winner, board = getWinner(board)
-    if winner < 0 :
-        print_board(board)
-        print("player 2 is the winner")
-    elif winner > 0:
-        print_board(board)
-        print("Player 1 is the winner")
-    else:
-        print("Tie")
-    
-    
+    print("Tie")
+
+
     
     
